@@ -207,6 +207,7 @@ security:
 # Data Structures
 
 ## User
+
 + id: 123 (number)
 + name: John Doe (string)
 + email: john@example.com (string)
@@ -323,16 +324,19 @@ func main() {
 
 ### 1. Getting Started
 
-```markdown
+````markdown
 # Getting Started
 
 ## Base URL
+
 ```
 https://api.example.com/v1
 ```
 
 ## Authentication
+
 All requests require an API key in the header:
+
 ```
 Authorization: Bearer YOUR_API_KEY
 ```
@@ -346,13 +350,13 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 ## Rate Limits
 - 100 requests per minute
 - 5000 requests per day
-```
+````
 
 ---
 
 ### 2. Authentication
 
-```markdown
+````markdown
 # Authentication
 
 ## Getting an API Key
@@ -377,21 +381,24 @@ curl "https://api.example.com/v1/users?api_key=sk_live_abc123..."
 ## Token Types
 - `sk_test_*` - Test mode (sandbox)
 - `sk_live_*` - Production mode
-```
+````
 
 ---
 
 ### 3. Endpoints Reference
 
-```markdown
+````markdown
+
 # Endpoints
 
 ## List Users
+
 `GET /users`
 
 Returns a paginated list of users.
 
 ### Query Parameters
+
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | page | integer | No | 1 | Page number |
@@ -400,6 +407,7 @@ Returns a paginated list of users.
 | order | string | No | desc | Sort order (asc/desc) |
 
 ### Response
+
 ```json
 {
   "data": [
@@ -420,6 +428,7 @@ Returns a paginated list of users.
 ```
 
 ### Example
+
 ```bash
 curl -H "Authorization: Bearer YOUR_API_KEY" \
   "https://api.example.com/v1/users?page=1&limit=20"
@@ -428,11 +437,13 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 ---
 
 ## Create User
+
 `POST /users`
 
 Creates a new user.
 
 ### Request Body
+
 ```json
 {
   "name": "John Doe",
@@ -441,6 +452,7 @@ Creates a new user.
 ```
 
 ### Response `201 Created`
+
 ```json
 {
   "id": 123,
@@ -451,10 +463,12 @@ Creates a new user.
 ```
 
 ### Errors
+
 - `400 Bad Request` - Invalid input
 - `409 Conflict` - Email already exists
 
 ### Example
+
 ```bash
 curl -X POST \
   -H "Authorization: Bearer YOUR_API_KEY" \
@@ -462,16 +476,18 @@ curl -X POST \
   -d '{"name":"John Doe","email":"john@example.com"}' \
   https://api.example.com/v1/users
 ```
-```
+
+````
 
 ---
 
 ### 4. Error Codes
 
-```markdown
+````markdown
 # Error Codes
 
 All errors follow this format:
+
 ```json
 {
   "error": {
@@ -486,6 +502,7 @@ All errors follow this format:
 ```
 
 ## HTTP Status Codes
+
 | Code | Meaning | Description |
 |------|---------|-------------|
 | 200 | OK | Request succeeded |
@@ -501,6 +518,7 @@ All errors follow this format:
 | 500 | Internal Server Error | Server error |
 
 ## Error Codes
+
 | Code | Description |
 |------|-------------|
 | validation_error | Input validation failed |
@@ -509,13 +527,13 @@ All errors follow this format:
 | unauthorized | Authentication failed |
 | forbidden | Insufficient permissions |
 | rate_limit_exceeded | Too many requests |
-```
+````
 
 ---
 
 ### 5. Code Examples
 
-```markdown
+````markdown
 # Code Examples
 
 ## cURL
@@ -599,7 +617,7 @@ req.Header.Set("Content-Type", "application/json")
 
 resp, _ = client.Do(req)
 ```
-```
+````
 
 ---
 
@@ -731,7 +749,7 @@ resp, _ = client.Do(req)
 
 ### 2. Include Examples
 
-```markdown
+````markdown
 ❌ Bad:
 POST /users
 Creates a user.
@@ -755,13 +773,13 @@ Response:
   "email": "john@example.com"
 }
 ```
-```
+````
 
 ---
 
 ### 3. Document All Error Cases
 
-```markdown
+````markdown
 ✅ Good:
 ### Errors
 - `400` - Invalid email format
@@ -775,13 +793,13 @@ Response:
     }
   }
   ```
-```
+````
 
 ---
 
 ### 4. Use Versioning
 
-```markdown
+````markdown
 # API Documentation v1.2.0
 
 ## Changelog
@@ -793,7 +811,7 @@ Response:
 ### v1.1.0 (2025-01-01)
 - Added pagination to `/users`
 - Fixed bug in date formatting
-```
+````
 
 ---
 
